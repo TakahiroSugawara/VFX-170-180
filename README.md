@@ -9,13 +9,15 @@ TMPのマテリアルはフォントアセットに紐づくため、
 
 TMP用のLit Unlit Shaderも反映はされていない。
 
-▼セットアップメモ
+・重力の設定
+Project setting ＞Physics＞Gravity＞y＞-1.11
+
+
+
+・セットアップメモ
 https://coposuke.hateblo.jp/entry/2020/06/07/020235
 manifest.jsonで下記を追加
     "com.copocopo.textmeshpro.animator": "https://github.com/coposuke/TextMeshProAnimator.git",
 
-
-▼重力の設定
-Project setting ＞Physics＞Gravity＞y＞-1.11
 
 
