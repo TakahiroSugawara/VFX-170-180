@@ -21,7 +21,8 @@ Shader "Hidden/Contrast Stretch Luminance" {
 		float4 frag(v2f_img i) : SV_Target
 		{
 			float4 col = tex2D(_MainTex, i.uv);
-			col.rgb = Luminance(col.rgb) * (1 + col.a * 2);
+			//col.rgb = Luminance(col.rgb) * (1 + col.a * 2);
+			col.rgb = Luminance(col.rgb) * (1 + col.a * 2) + Luminance(col.r);
 			return col;
 		}
 		ENDCG

@@ -6,7 +6,6 @@ using TMPro;
 
 public class TextToCameraDistance : MonoBehaviour
 {
-    public GameObject Camera;
     public float Distance;
 
     public float Do_GlitchOFF_Time;
@@ -51,7 +50,7 @@ public class TextToCameraDistance : MonoBehaviour
     void Update()
     {
         //worldÅ@positionÇ≈ÇÃãóó£ÇÃî‰är
-        Distance = Vector3.Distance(this.transform.position, Camera.transform.position);
+        //Distance = Vector3.Distance(this.transform.position, Camera.transform.position);
 
         //var position = new Vector3();
         //var rotation = new Vector3(0, 180, 0);

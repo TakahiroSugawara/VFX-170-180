@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "com.copocopo.textmeshpro.animator": "https://github.com/coposuke/TextMeshProAnimator.git",
     "com.unity.cinemachine": "2.8.2",
     "com.unity.collab-proxy": "1.15.1",
     "com.unity.ide.rider": "3.0.7",

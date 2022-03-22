@@ -23,6 +23,7 @@ public class JsonBody
     public string Category = "Manage";
     public bool PriorityFlag = false;
     public string TemplateID = "Random";
+    public string Name = "Jsonの名前です！";
     public string Comment = "Jsonのコメントです！";
 }
 
@@ -38,7 +39,7 @@ public class SC_SceneRoot_torus : MonoBehaviour
     /// JsonのBodyの内容をデータをすべて格納
     /// </summary>
     private List<Dictionary<string, object>> JsonDatas = new List<Dictionary<string, object>>();
-    public List<JsonBody> JSON_DATAS = new List<JsonBody>();
+    public List<string> CommentList = new List<string>();
 
 
     int LOCA_LPORT = 13333;
@@ -78,7 +79,7 @@ public class SC_SceneRoot_torus : MonoBehaviour
 
                 CreatedTexts[CreatedTexts.Count -1].SetActive(true);
 
-                var comment = JSON_DATAS[r2.Next(0, JSON_DATAS.Count)].Comment;
+                var comment = CommentList[r2.Next(0, CommentList.Count)];
                 TextPrefab.GetComponent<TextMeshPro>().text = comment;
 
                 Vector3 pos = thisMatrix.MultiplyPoint3x4(vertex);
@@ -141,7 +142,7 @@ public class SC_SceneRoot_torus : MonoBehaviour
 
             //Json Read
             var JsonFilePath = Application.dataPath + "/Json/";
-            string stringJson_Case = File.ReadAllText(JsonFilePath + "youtube.json");
+            string stringJson_Case = File.ReadAllText(JsonFilePath + "init.json");
             dynamic json_Case = Utf8JsonExtension.ParseJsonText<dynamic>(stringJson_Case);
 
 
@@ -152,11 +153,9 @@ public class SC_SceneRoot_torus : MonoBehaviour
                 JsonDatas.Add(b);
 
                 JsonBody j = new JsonBody();
-                j.PriorityFlag = b["priorityflag"];
-                j.TemplateID = b["templateid"];
                 j.Comment = b["comment"];
 
-                JSON_DATAS.Add(j);
+                CommentList.Add(j.Comment);
             }
         }
         catch(Exception ex)
@@ -178,7 +177,6 @@ public class SC_SceneRoot_torus : MonoBehaviour
 
                 List<float> distansList = new List<float>();
 
-
                 Dispatcher.Current.BeginInvoke(() =>
                 {
                     foreach (GameObject t in CreatedTexts)
@@ -190,8 +188,6 @@ public class SC_SceneRoot_torus : MonoBehaviour
 
                     Debug.Log("id = " + pos + "Text = " + text);
                 });
-
-
             }
             catch (Exception ex)
             {

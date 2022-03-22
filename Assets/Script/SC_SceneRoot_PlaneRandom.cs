@@ -42,7 +42,9 @@ public class SC_SceneRoot_PlaneRandom : MonoBehaviour
 
     public float SpawnRate = 0.0f;
 
+    [GradientUsage(true)]
     public Gradient GradientColor;
+    public bool FlagGradientColor = false;
 
     // Start is called before the first frame update
     void Start()
@@ -85,13 +87,25 @@ public class SC_SceneRoot_PlaneRandom : MonoBehaviour
         //頂点の数分、コメントを生成している。
         CreatedTexts.Add(Instantiate(TextPrefab));
         
-        //suga
-        //CreatedTexts[CreatedTexts.Count - 1].GetComponent<TextMeshPro>().color = GradientColor;
+
+        //CreatedTexts[CreatedTexts.Count - 1].GetComponent<TextMeshPro>(). = GradientColor;
         
         //default de off nanode On
         CreatedTexts[CreatedTexts.Count - 1].GetComponent<MeshRenderer>().shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.On;
-        //default de off nanode On
+        //mesh renderer をOnにする
         CreatedTexts[CreatedTexts.Count - 1].GetComponent<MeshRenderer>().enabled = false;
+
+        //colorを設定する
+
+        if (FlagGradientColor)
+        {
+            var r_c = r2.Next(1, 100);
+            float gradient = (float)r_c / 100.0f;
+            CreatedTexts[CreatedTexts.Count - 1].GetComponent<TextMeshPro>().color = GradientColor.Evaluate(gradient);
+            //CreatedTexts[CreatedTexts.Count - 1].GetComponent<TextMeshPro>().faceColor = GradientColor.Evaluate(gradient);
+            CreatedTexts[CreatedTexts.Count - 1].GetComponent<TextMeshPro>().outlineColor = GradientColor.Evaluate(gradient);
+        }
+
 
         CreatedTexts[CreatedTexts.Count - 1].SetActive(true);
 

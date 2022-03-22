@@ -1,34 +1,18 @@
-# VFX-Template
+# VFX-170-180
 
-## Hou to use
+▼備考
+Fontファイルが100MBを超えるため、
+日本語は未対応の状態。
+TMPのマテリアルはフォントアセットに紐づくため、
+TMP用のLit Unlit Shaderも反映はされていない。
 
-1. Git HubからCloneする（個人アカウントのため github.com.**private**）
-2. download後、フォルダ名を任意にリネーム
-3. フォルダの.gitフォルダを削除
-4. Git GUIで新しいリポジトリとして登録（VFX-Templateリポジトリを上書きしないように）
-5. Read me はベースはNotionで作成し、画像のアップロードはGithubのエディターで行う
+▼セットアップメモ
+https://coposuke.hateblo.jp/entry/2020/06/07/020235
+manifest.jsonで下記を追加
+    "com.copocopo.textmeshpro.animator": "https://github.com/coposuke/TextMeshProAnimator.git",
 
-## **VFX-Template**
 
-**・全てのHDRPサンプルシーン素材の削除**
+▼重力の設定
+Project setting ＞Physics＞Gravity＞y＞-1.11
 
-**・Edit＞ProjectSetting＞HDRPDefaultSetting＞**
 
-```
-Default Volume Profile Asset
-	すべての項目を削除
-DefaultLookDevProfile
-	すべてのチェックを外す
-	※項目の削除ができなかったため
-
-```
-
-**・Edit＞ProjectSetting＞Editor**
-
-```
-Version Control＞Mode
-	Meta Filesに変更
-Asset Serialization＞Mode
-	Force Textに変更（Binary形式でなく、Text化）
-
-```
